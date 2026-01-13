@@ -58,8 +58,15 @@ export default function Home() {
   if (error || !siteData) {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-lg text-red-600">{error || "Site not found"}</p>
+        <div className="text-center max-w-2xl px-4">
+          <p className="text-lg text-red-600 font-semibold mb-2">Error Loading Site</p>
+          <p className="text-sm text-gray-700">{error || "Site not found"}</p>
+          <p className="text-xs text-gray-500 mt-4">
+            Hostname: {typeof window !== 'undefined' ? window.location.hostname : 'N/A'}
+          </p>
+          <p className="text-xs text-gray-500">
+            Check the browser console for more details.
+          </p>
         </div>
       </div>
     );

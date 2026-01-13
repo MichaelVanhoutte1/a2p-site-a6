@@ -1,6 +1,7 @@
 /**
  * Extracts the subdomain from a hostname
  * Example: "acme.mydomain.com" -> "acme"
+ * Example: "acme-plumbing.stonesystems.dev" -> "acme-plumbing"
  */
 export function extractSubdomain(hostname: string): string | null {
   // Remove port if present
@@ -9,13 +10,21 @@ export function extractSubdomain(hostname: string): string | null {
   // Split by dots
   const parts = hostWithoutPort.split('.');
   
+  console.log('extractSubdomain - Hostname:', hostname);
+  console.log('extractSubdomain - Parts:', parts);
+  console.log('extractSubdomain - Parts length:', parts.length);
+  
   // If we have at least 3 parts (subdomain.domain.tld), return the first part
+  // Examples: "acme-plumbing.stonesystems.dev" -> ["acme-plumbing", "stonesystems", "dev"]
   // If it's localhost or IP, return null
   if (parts.length >= 3 && parts[0] !== 'www' && parts[0] !== 'localhost') {
-    return parts[0];
+    const subdomain = parts[0];
+    console.log('extractSubdomain - Extracted subdomain:', subdomain);
+    return subdomain;
   }
   
   // For development/localhost, you might want to handle this differently
   // For now, return null if no subdomain detected
+  console.log('extractSubdomain - No subdomain detected');
   return null;
 }
