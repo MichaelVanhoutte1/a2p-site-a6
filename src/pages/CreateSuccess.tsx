@@ -4,6 +4,16 @@ import { useLocation, useSearchParams } from "wouter";
 import { Copy, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { TermsOfServiceContent } from "@/components/TermsOfService";
+import { PrivacyPolicyContent } from "@/components/PrivacyPolicy";
 
 interface SiteData {
   slug: string;
@@ -115,27 +125,45 @@ Consent is provided exclusively for ${siteData.business_name} to contact the use
               </div>
             </div>
 
-            {/* Privacy Policy URL */}
+            {/* Privacy Policy and Terms Links */}
             <div>
-              <h2 className="text-xl font-semibold mb-3">Privacy Policy URL</h2>
-              <div className="flex items-center gap-2 flex-wrap">
-                <a
-                  href={privacyPolicyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline flex items-center gap-2"
-                >
-                  {privacyPolicyUrl}
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => copyToClipboard(privacyPolicyUrl, "Privacy Policy URL")}
-                >
-                  <Copy className="w-4 h-4 mr-2" />
-                  Copy
-                </Button>
+              <h2 className="text-xl font-semibold mb-3">Legal Pages</h2>
+              <div className="flex items-center gap-4 flex-wrap">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="outline">
+                      View Privacy Policy
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-3xl max-h-[80vh]">
+                    <DialogHeader>
+                      <DialogTitle className="text-2xl font-bold">{siteData.business_name} Privacy Policy</DialogTitle>
+                    </DialogHeader>
+                    <PrivacyPolicyContent 
+                      businessName={siteData.business_name} 
+                      email={siteData.email} 
+                      phone={siteData.phone} 
+                    />
+                  </DialogContent>
+                </Dialog>
+
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="outline">
+                      View Terms of Service
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-3xl max-h-[80vh]">
+                    <DialogHeader>
+                      <DialogTitle className="text-2xl font-bold">{siteData.business_name} Terms of Service</DialogTitle>
+                    </DialogHeader>
+                    <TermsOfServiceContent 
+                      businessName={siteData.business_name} 
+                      email={siteData.email} 
+                      phone={siteData.phone} 
+                    />
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
 
