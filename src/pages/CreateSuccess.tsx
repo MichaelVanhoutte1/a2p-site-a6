@@ -115,28 +115,51 @@ Consent is provided exclusively for ${siteData.business_name} to contact the use
               </div>
             </div>
 
-            {/* Privacy Policy and Terms Links */}
+            {/* Privacy Policy URL */}
             <div>
-              <h2 className="text-xl font-semibold mb-3">Legal Pages</h2>
-              <div className="flex items-center gap-4 flex-wrap">
+              <h2 className="text-xl font-semibold mb-3">Privacy Policy URL</h2>
+              <div className="flex items-center gap-2 flex-wrap">
                 <a
                   href={`${websiteUrl}/privacy-policy`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:underline flex items-center gap-2"
                 >
-                  Privacy Policy
+                  {websiteUrl}/privacy-policy
                   <ExternalLink className="w-4 h-4" />
                 </a>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => copyToClipboard(`${websiteUrl}/privacy-policy`, "Privacy Policy URL")}
+                >
+                  <Copy className="w-4 h-4 mr-2" />
+                  Copy
+                </Button>
+              </div>
+            </div>
+
+            {/* Terms of Service URL */}
+            <div>
+              <h2 className="text-xl font-semibold mb-3">Terms of Service URL</h2>
+              <div className="flex items-center gap-2 flex-wrap">
                 <a
                   href={`${websiteUrl}/terms`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:underline flex items-center gap-2"
                 >
-                  Terms of Service
+                  {websiteUrl}/terms
                   <ExternalLink className="w-4 h-4" />
                 </a>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => copyToClipboard(`${websiteUrl}/terms`, "Terms of Service URL")}
+                >
+                  <Copy className="w-4 h-4 mr-2" />
+                  Copy
+                </Button>
               </div>
             </div>
 
