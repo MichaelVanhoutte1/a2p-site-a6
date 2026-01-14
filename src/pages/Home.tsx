@@ -35,6 +35,43 @@ export default function Home() {
       setPrivacyOpen(false);
     }
   }, [location]);
+
+  useEffect(() => {
+    // Update metadata when site data is loaded
+    if (siteData) {
+      const title = siteData.business_name;
+      const description = `${siteData.business_name} ${siteData.description}`;
+      
+      // Update document title
+      document.title = title;
+      
+      // Update or create meta tags
+      const updateMetaTag = (property: string, content: string) => {
+        let meta = document.querySelector(`meta[property="${property}"]`) as HTMLMetaElement;
+        if (!meta) {
+          meta = document.createElement('meta');
+          meta.setAttribute('property', property);
+          document.head.appendChild(meta);
+        }
+        meta.setAttribute('content', content);
+      };
+      
+      const updateNameMetaTag = (name: string, content: string) => {
+        let meta = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement;
+        if (!meta) {
+          meta = document.createElement('meta');
+          meta.setAttribute('name', name);
+          document.head.appendChild(meta);
+        }
+        meta.setAttribute('content', content);
+      };
+      
+      // Update Open Graph tags
+      updateMetaTag('og:title', title);
+      updateMetaTag('og:description', description);
+      updateNameMetaTag('description', description);
+    }
+  }, [siteData]);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
