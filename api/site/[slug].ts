@@ -29,10 +29,11 @@ export default async function handler(
     }
 
     // Initialize Supabase client
-    const supabaseUrl = process.env.SUPABASE_URL;
-    const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
 
     if (!supabaseUrl || !supabaseAnonKey) {
+      console.error('API Route - Missing env vars. URL:', !!supabaseUrl, 'AnonKey:', !!supabaseAnonKey);
       return res.status(500).json({ error: 'Supabase configuration missing' });
     }
 

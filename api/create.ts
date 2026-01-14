@@ -25,10 +25,11 @@ export default async function handler(
       .replace(/^-+|-+$/g, '');
 
     // Initialize Supabase client with service role key
-    const supabaseUrl = process.env.SUPABASE_URL;
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
     const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
     if (!supabaseUrl || !supabaseServiceKey) {
+      console.error('API Route - Missing env vars. URL:', !!supabaseUrl, 'ServiceKey:', !!supabaseServiceKey);
       return res.status(500).json({ error: 'Supabase configuration missing' });
     }
 
