@@ -32,6 +32,7 @@ export function extractSubdomain(hostname: string): string | null {
 /**
  * Checks if the current hostname is the root domain (no subdomain)
  * Example: "stonesystems.dev" -> true
+ * Example: "www.stonesystems.dev" -> true (www is treated as root domain)
  * Example: "acme-plumbing.stonesystems.dev" -> false
  */
 export function isRootDomain(hostname: string): boolean {
@@ -39,6 +40,12 @@ export function isRootDomain(hostname: string): boolean {
   const parts = hostWithoutPort.split('.');
   
   // Root domain has 2 parts (domain.tld) or is localhost
-  // Subdomain has 3+ parts (subdomain.domain.tld)
-  return parts.length === 2 || hostname === 'localhost' || hostname.startsWith('localhost:');
+  // Also treat www.domain.tld as root domain (www is a special case)
+  // Subdomain has 3+ parts where first part is NOT www (subdomain.domain.tld)
+  return (
+    parts.length === 2 || 
+    (parts.length === 3 && parts[0] === 'www') ||
+    hostname === 'localhost' || 
+    hostname.startsWith('localhost:')
+  );
 }
