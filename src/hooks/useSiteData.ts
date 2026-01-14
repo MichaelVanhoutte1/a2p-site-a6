@@ -6,6 +6,7 @@ export interface SiteData {
   business_name: string;
   email: string;
   phone: string;
+  description: string;
 }
 
 export function useSiteData() {

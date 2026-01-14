@@ -28,3 +28,17 @@ export function extractSubdomain(hostname: string): string | null {
   console.log('extractSubdomain - No subdomain detected');
   return null;
 }
+
+/**
+ * Checks if the current hostname is the root domain (no subdomain)
+ * Example: "stonesystems.dev" -> true
+ * Example: "acme-plumbing.stonesystems.dev" -> false
+ */
+export function isRootDomain(hostname: string): boolean {
+  const hostWithoutPort = hostname.split(':')[0];
+  const parts = hostWithoutPort.split('.');
+  
+  // Root domain has 2 parts (domain.tld) or is localhost
+  // Subdomain has 3+ parts (subdomain.domain.tld)
+  return parts.length === 2 || hostname === 'localhost' || hostname.startsWith('localhost:');
+}

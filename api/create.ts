@@ -10,11 +10,11 @@ export default async function handler(
   }
 
   try {
-    const { businessName, email, phone } = req.body;
+    const { businessName, email, phone, description } = req.body;
 
-    if (!businessName || !email || !phone) {
+    if (!businessName || !email || !phone || !description) {
       return res.status(400).json({
-        error: 'Missing required fields: businessName, email, phone',
+        error: 'Missing required fields: businessName, email, phone, description',
       });
     }
 
@@ -48,6 +48,7 @@ export default async function handler(
         business_name: businessName,
         email,
         phone,
+        description,
       })
       .select()
       .single();
