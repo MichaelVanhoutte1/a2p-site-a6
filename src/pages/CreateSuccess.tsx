@@ -142,18 +142,15 @@ Consent is provided exclusively for ${siteData.business_name} to contact the use
             {/* Campaign Description */}
             <div>
               <h2 className="text-xl font-semibold mb-3">Campaign Description</h2>
-              <div className="bg-gray-50 p-4 rounded-lg border">
+              <div 
+                className="bg-gray-50 p-4 rounded-lg border cursor-pointer hover:bg-gray-100 transition-colors relative group"
+                onClick={() => copyToClipboard(campaignDescription, "Campaign Description")}
+                title="Click to copy"
+              >
                 <p className="text-sm whitespace-pre-wrap">{campaignDescription}</p>
-              </div>
-              <div className="mt-3">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => copyToClipboard(campaignDescription, "Campaign Description")}
-                >
-                  <Copy className="w-4 h-4 mr-2" />
-                  Copy Campaign Description
-                </Button>
+                <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-500 bg-white px-2 py-1 rounded border">
+                  Click to copy
+                </div>
               </div>
             </div>
 
@@ -164,35 +161,29 @@ Consent is provided exclusively for ${siteData.business_name} to contact the use
               <div className="space-y-4">
                 <div>
                   <h3 className="text-sm font-semibold text-gray-700 mb-2">Sample Message 1</h3>
-                  <div className="bg-gray-50 p-4 rounded-lg border">
+                  <div 
+                    className="bg-gray-50 p-4 rounded-lg border cursor-pointer hover:bg-gray-100 transition-colors relative group"
+                    onClick={() => copyToClipboard(sampleMessage1, "Sample Message 1")}
+                    title="Click to copy"
+                  >
                     <p className="text-sm whitespace-pre-wrap">{sampleMessage1}</p>
-                  </div>
-                  <div className="mt-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => copyToClipboard(sampleMessage1, "Sample Message 1")}
-                    >
-                      <Copy className="w-4 h-4 mr-2" />
-                      Copy
-                    </Button>
+                    <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-500 bg-white px-2 py-1 rounded border">
+                      Click to copy
+                    </div>
                   </div>
                 </div>
 
                 <div>
                   <h3 className="text-sm font-semibold text-gray-700 mb-2">Sample Message 2</h3>
-                  <div className="bg-gray-50 p-4 rounded-lg border">
+                  <div 
+                    className="bg-gray-50 p-4 rounded-lg border cursor-pointer hover:bg-gray-100 transition-colors relative group"
+                    onClick={() => copyToClipboard(sampleMessage2, "Sample Message 2")}
+                    title="Click to copy"
+                  >
                     <p className="text-sm whitespace-pre-wrap">{sampleMessage2}</p>
-                  </div>
-                  <div className="mt-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => copyToClipboard(sampleMessage2, "Sample Message 2")}
-                    >
-                      <Copy className="w-4 h-4 mr-2" />
-                      Copy
-                    </Button>
+                    <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-500 bg-white px-2 py-1 rounded border">
+                      Click to copy
+                    </div>
                   </div>
                 </div>
               </div>
@@ -201,36 +192,30 @@ Consent is provided exclusively for ${siteData.business_name} to contact the use
             {/* Call-to-Action / Message Flow */}
             <div>
               <h2 className="text-xl font-semibold mb-3">Call-to-Action / Message Flow</h2>
-              <div className="bg-gray-50 p-4 rounded-lg border">
+              <div 
+                className="bg-gray-50 p-4 rounded-lg border cursor-pointer hover:bg-gray-100 transition-colors relative group"
+                onClick={() => copyToClipboard(callToActionMessageFlow, "Call-to-Action / Message Flow")}
+                title="Click to copy"
+              >
                 <p className="text-sm whitespace-pre-wrap">{callToActionMessageFlow}</p>
-              </div>
-              <div className="mt-3">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => copyToClipboard(callToActionMessageFlow, "Call-to-Action / Message Flow")}
-                >
-                  <Copy className="w-4 h-4 mr-2" />
-                  Copy Call-to-Action / Message Flow
-                </Button>
+                <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-500 bg-white px-2 py-1 rounded border">
+                  Click to copy
+                </div>
               </div>
             </div>
 
             {/* Opt-in Message */}
             <div>
               <h2 className="text-xl font-semibold mb-3">Opt-in Message</h2>
-              <div className="bg-gray-50 p-4 rounded-lg border">
+              <div 
+                className="bg-gray-50 p-4 rounded-lg border cursor-pointer hover:bg-gray-100 transition-colors relative group"
+                onClick={() => copyToClipboard(optInMessage, "Opt-in Message")}
+                title="Click to copy"
+              >
                 <p className="text-sm whitespace-pre-wrap">{optInMessage}</p>
-              </div>
-              <div className="mt-3">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => copyToClipboard(optInMessage, "Opt-in Message")}
-                >
-                  <Copy className="w-4 h-4 mr-2" />
-                  Copy Opt-in Message
-                </Button>
+                <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-500 bg-white px-2 py-1 rounded border">
+                  Click to copy
+                </div>
               </div>
             </div>
           </div>
