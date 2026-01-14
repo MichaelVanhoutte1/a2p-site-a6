@@ -32,10 +32,19 @@ function App() {
         <Route path="/success">
           <CreateSuccess />
         </Route>
-        <Route path="/">
+        {!isRoot && (
+          <>
+            <Route path="/privacy-policy">
+              <Home />
+            </Route>
+            <Route path="/terms">
+              <Home />
+            </Route>
+          </>
+        )}
+        <Route>
           {isRoot ? <RootLanding /> : <Home />}
         </Route>
-        <Route>Sorry, this page doesn't exist.</Route>
       </Switch>
     </Router>
   );

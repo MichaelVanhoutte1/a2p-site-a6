@@ -29,6 +29,10 @@ export default function Home() {
       setTermsOpen(true);
     } else if (location === "/privacy" || location === "/privacy-policy") {
       setPrivacyOpen(true);
+    } else {
+      // Close dialogs when navigating away
+      setTermsOpen(false);
+      setPrivacyOpen(false);
     }
   }, [location]);
   const [formData, setFormData] = useState({
@@ -213,11 +217,11 @@ export default function Home() {
 
               {/* Terms and Privacy Links */}
               <div className="flex justify-center gap-8 text-sm pt-3">
-                <Dialog>
+                <Dialog open={termsOpen} onOpenChange={setTermsOpen}>
                   <DialogTrigger asChild>
-                    <button className="underline hover:text-primary transition-colors cursor-pointer">
+                    <a href="/terms" className="underline hover:text-primary transition-colors cursor-pointer">
                       Terms of Service
-                    </button>
+                    </a>
                   </DialogTrigger>
                   <DialogContent className="max-w-3xl max-h-[80vh]">
                     <DialogHeader>
@@ -227,11 +231,11 @@ export default function Home() {
                   </DialogContent>
                 </Dialog>
 
-                <Dialog>
+                <Dialog open={privacyOpen} onOpenChange={setPrivacyOpen}>
                   <DialogTrigger asChild>
-                    <button className="underline hover:text-primary transition-colors cursor-pointer">
+                    <a href="/privacy-policy" className="underline hover:text-primary transition-colors cursor-pointer">
                       Privacy Policy
-                    </button>
+                    </a>
                   </DialogTrigger>
                   <DialogContent className="max-w-3xl max-h-[80vh]">
                     <DialogHeader>
