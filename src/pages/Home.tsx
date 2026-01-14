@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,9 +15,22 @@ import { Toaster } from "@/components/ui/sonner";
 import { useSiteData } from "@/hooks/useSiteData";
 import { TermsOfServiceContent } from "@/components/TermsOfService";
 import { PrivacyPolicyContent } from "@/components/PrivacyPolicy";
+import { useLocation } from "wouter";
 
 export default function Home() {
   const { siteData, loading, error } = useSiteData();
+  const [location] = useLocation();
+  const [termsOpen, setTermsOpen] = useState(false);
+  const [privacyOpen, setPrivacyOpen] = useState(false);
+
+  useEffect(() => {
+    // Auto-open dialog based on route
+    if (location === "/terms" || location === "/terms-of-service") {
+      setTermsOpen(true);
+    } else if (location === "/privacy" || location === "/privacy-policy") {
+      setPrivacyOpen(true);
+    }
+  }, [location]);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
