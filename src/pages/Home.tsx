@@ -109,7 +109,7 @@ export default function Home() {
           <div className="bg-gray-100 p-8 md:p-12 flex flex-col justify-center">
             <h2 className="text-4xl font-bold mb-6">About Us</h2>
             <p className="text-gray-700 leading-relaxed">
-              {businessName} provides services. We provide Customer Support messages (information on your
+              {businessName} {siteData.description}. We provide Customer Support messages (information on your
               order/service and help if you ever need guidance during the process), and marketing
               of our services when applicable. When you consent to receive messaging from {businessName},
               you are providing it only to {businessName}, not any third parties. Your SMS opt-in data will never

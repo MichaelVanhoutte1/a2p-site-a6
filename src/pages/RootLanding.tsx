@@ -110,18 +110,18 @@ export default function RootLanding() {
 
           <div className="space-y-2">
             <Label htmlFor="description" className="text-sm font-semibold">
-              One-Sentence Description *
+              What your company does *
             </Label>
             <Textarea
               id="description"
-              placeholder="Describe what your company does in one sentence"
+              placeholder="does X, Y, Z"
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               className="min-h-[100px]"
               required
             />
             <p className="text-xs text-gray-500">
-              Example: "Software company that helps home service businesses automate their operations"
+              Format: "does X, Y, Z" (e.g., "does plumbing, electrical work, and HVAC services")
             </p>
           </div>
 
