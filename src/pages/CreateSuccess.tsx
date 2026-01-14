@@ -71,30 +71,30 @@ export default function CreateSuccess() {
     toast.success(`${label} copied to clipboard!`);
   };
 
-  const campaignText = `Campaign Description: Send first-party low volume messages offered directly by the messaging party. ${siteData.business_name} is ${siteData.description}.
+  const campaignDescription = `Send first-party low volume messages offered directly by the messaging party. ${siteData.business_name} is ${siteData.description}.`;
 
-Sample Messages
-Sample message 1: Your 10DLC campaign is now fully approved, congratulations! Respond STOP to opt out from ${siteData.business_name}
-Sample message 2: Your payment has been successfully received. Respond STOP to opt out from ${siteData.business_name}
+  const sampleMessage1 = `Your 10DLC campaign is now fully approved, congratulations! Respond STOP to opt out from ${siteData.business_name}`;
 
-Call-to-Action / Message Flow: Clients will be able to sign up to receive SMS notifications by checking their preference by clicking on ${websiteUrl} where they'll see a form to fill out information, and can click a specific box for Account Notification.
+  const sampleMessage2 = `Your payment has been successfully received. Respond STOP to opt out from ${siteData.business_name}`;
+
+  const callToActionMessageFlow = `Clients will be able to sign up to receive SMS notifications by checking their preference by clicking on ${websiteUrl} where they'll see a form to fill out information, and can click a specific box for Account Notification.
 [ ] By providing a telephone number, clicking this button, and submitting the form, you are consenting to be contacted by SMS text message and AI-powered voice calls from ${siteData.business_name}, regarding Account Notification (our message frequency may vary). Message & data rates apply. Reply STOP to unsubscribe from further messaging from ${siteData.business_name}. Reply HELP for more information. See our Privacy Policy (containing our SMS Terms) at the bottom of the page for more information.
-Consent is provided exclusively for ${siteData.business_name} to contact the user based on the selection, not any other third parties mentioned on the site. SMS opt-in data is not shared/sold to third parties for promotional/marketing purposes.
-Privacy Policy URL: ${privacyPolicyUrl}
+Consent is provided exclusively for ${siteData.business_name} to contact the user based on the selection, not any other third parties mentioned on the site. SMS opt-in data is not shared/sold to third parties for promotional/marketing purposes.`;
 
-Opt-in Message: Welcome! You've now opted-in to messaging from ${siteData.business_name}. Message Frequency may vary. Message and data rates may apply. Reply STOP to opt-out, and HELP for support.`;
+  const optInMessage = `Welcome! You've now opted-in to messaging from ${siteData.business_name}. Message Frequency may vary. Message and data rates may apply. Reply STOP to opt-out, and HELP for support.`;
 
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-4">
       <Toaster />
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-lg shadow-lg p-8 mb-6">
-          <h1 className="text-3xl font-bold mb-6">Site Created Successfully!</h1>
+          <h1 className="text-3xl font-bold mb-8">Site Created Successfully!</h1>
           
-          <div className="space-y-4">
+          <div className="space-y-8">
+            {/* Website URL */}
             <div>
-              <h2 className="text-xl font-semibold mb-2">Your Website URL</h2>
-              <div className="flex items-center gap-2">
+              <h2 className="text-xl font-semibold mb-3">Your Website URL</h2>
+              <div className="flex items-center gap-2 flex-wrap">
                 <a
                   href={websiteUrl}
                   target="_blank"
@@ -115,20 +115,121 @@ Opt-in Message: Welcome! You've now opted-in to messaging from ${siteData.busine
               </div>
             </div>
 
+            {/* Privacy Policy URL */}
             <div>
-              <h2 className="text-xl font-semibold mb-4">Campaign Description</h2>
-              <div className="bg-gray-50 p-6 rounded-lg border">
-                <pre className="whitespace-pre-wrap text-sm font-mono">
-                  {campaignText}
-                </pre>
-              </div>
-              <div className="mt-4">
+              <h2 className="text-xl font-semibold mb-3">Privacy Policy URL</h2>
+              <div className="flex items-center gap-2 flex-wrap">
+                <a
+                  href={privacyPolicyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline flex items-center gap-2"
+                >
+                  {privacyPolicyUrl}
+                  <ExternalLink className="w-4 h-4" />
+                </a>
                 <Button
                   variant="outline"
-                  onClick={() => copyToClipboard(campaignText, "Campaign description")}
+                  size="sm"
+                  onClick={() => copyToClipboard(privacyPolicyUrl, "Privacy Policy URL")}
+                >
+                  <Copy className="w-4 h-4 mr-2" />
+                  Copy
+                </Button>
+              </div>
+            </div>
+
+            {/* Campaign Description */}
+            <div>
+              <h2 className="text-xl font-semibold mb-3">Campaign Description</h2>
+              <div className="bg-gray-50 p-4 rounded-lg border">
+                <p className="text-sm whitespace-pre-wrap">{campaignDescription}</p>
+              </div>
+              <div className="mt-3">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => copyToClipboard(campaignDescription, "Campaign Description")}
                 >
                   <Copy className="w-4 h-4 mr-2" />
                   Copy Campaign Description
+                </Button>
+              </div>
+            </div>
+
+            {/* Sample Messages */}
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Sample Messages</h2>
+              
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-sm font-semibold text-gray-700 mb-2">Sample Message 1</h3>
+                  <div className="bg-gray-50 p-4 rounded-lg border">
+                    <p className="text-sm whitespace-pre-wrap">{sampleMessage1}</p>
+                  </div>
+                  <div className="mt-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => copyToClipboard(sampleMessage1, "Sample Message 1")}
+                    >
+                      <Copy className="w-4 h-4 mr-2" />
+                      Copy
+                    </Button>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-semibold text-gray-700 mb-2">Sample Message 2</h3>
+                  <div className="bg-gray-50 p-4 rounded-lg border">
+                    <p className="text-sm whitespace-pre-wrap">{sampleMessage2}</p>
+                  </div>
+                  <div className="mt-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => copyToClipboard(sampleMessage2, "Sample Message 2")}
+                    >
+                      <Copy className="w-4 h-4 mr-2" />
+                      Copy
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Call-to-Action / Message Flow */}
+            <div>
+              <h2 className="text-xl font-semibold mb-3">Call-to-Action / Message Flow</h2>
+              <div className="bg-gray-50 p-4 rounded-lg border">
+                <p className="text-sm whitespace-pre-wrap">{callToActionMessageFlow}</p>
+              </div>
+              <div className="mt-3">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => copyToClipboard(callToActionMessageFlow, "Call-to-Action / Message Flow")}
+                >
+                  <Copy className="w-4 h-4 mr-2" />
+                  Copy Call-to-Action / Message Flow
+                </Button>
+              </div>
+            </div>
+
+            {/* Opt-in Message */}
+            <div>
+              <h2 className="text-xl font-semibold mb-3">Opt-in Message</h2>
+              <div className="bg-gray-50 p-4 rounded-lg border">
+                <p className="text-sm whitespace-pre-wrap">{optInMessage}</p>
+              </div>
+              <div className="mt-3">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => copyToClipboard(optInMessage, "Opt-in Message")}
+                >
+                  <Copy className="w-4 h-4 mr-2" />
+                  Copy Opt-in Message
                 </Button>
               </div>
             </div>
