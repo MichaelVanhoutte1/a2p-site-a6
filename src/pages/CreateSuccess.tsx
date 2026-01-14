@@ -147,8 +147,8 @@ Consent is provided exclusively for ${siteData.business_name} to contact the use
                 onClick={() => copyToClipboard(campaignDescription, "Campaign Description")}
                 title="Click to copy"
               >
-                <p className="text-sm whitespace-pre-wrap">{campaignDescription}</p>
-                <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-500 bg-white px-2 py-1 rounded border">
+                <p className="text-sm whitespace-pre-wrap select-all">{campaignDescription}</p>
+                <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-500 bg-white px-2 py-1 rounded border shadow-sm">
                   Click to copy
                 </div>
               </div>
@@ -166,8 +166,8 @@ Consent is provided exclusively for ${siteData.business_name} to contact the use
                     onClick={() => copyToClipboard(sampleMessage1, "Sample Message 1")}
                     title="Click to copy"
                   >
-                    <p className="text-sm whitespace-pre-wrap">{sampleMessage1}</p>
-                    <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-500 bg-white px-2 py-1 rounded border">
+                    <p className="text-sm whitespace-pre-wrap select-all">{sampleMessage1}</p>
+                    <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-500 bg-white px-2 py-1 rounded border shadow-sm">
                       Click to copy
                     </div>
                   </div>
@@ -180,8 +180,8 @@ Consent is provided exclusively for ${siteData.business_name} to contact the use
                     onClick={() => copyToClipboard(sampleMessage2, "Sample Message 2")}
                     title="Click to copy"
                   >
-                    <p className="text-sm whitespace-pre-wrap">{sampleMessage2}</p>
-                    <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-500 bg-white px-2 py-1 rounded border">
+                    <p className="text-sm whitespace-pre-wrap select-all">{sampleMessage2}</p>
+                    <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-500 bg-white px-2 py-1 rounded border shadow-sm">
                       Click to copy
                     </div>
                   </div>
@@ -197,8 +197,8 @@ Consent is provided exclusively for ${siteData.business_name} to contact the use
                 onClick={() => copyToClipboard(callToActionMessageFlow, "Call-to-Action / Message Flow")}
                 title="Click to copy"
               >
-                <p className="text-sm whitespace-pre-wrap">{callToActionMessageFlow}</p>
-                <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-500 bg-white px-2 py-1 rounded border">
+                <p className="text-sm whitespace-pre-wrap select-all">{callToActionMessageFlow}</p>
+                <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-500 bg-white px-2 py-1 rounded border shadow-sm">
                   Click to copy
                 </div>
               </div>
@@ -212,8 +212,8 @@ Consent is provided exclusively for ${siteData.business_name} to contact the use
                 onClick={() => copyToClipboard(optInMessage, "Opt-in Message")}
                 title="Click to copy"
               >
-                <p className="text-sm whitespace-pre-wrap">{optInMessage}</p>
-                <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-500 bg-white px-2 py-1 rounded border">
+                <p className="text-sm whitespace-pre-wrap select-all">{optInMessage}</p>
+                <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-500 bg-white px-2 py-1 rounded border shadow-sm">
                   Click to copy
                 </div>
               </div>
