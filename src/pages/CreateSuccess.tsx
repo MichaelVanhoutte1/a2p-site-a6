@@ -63,8 +63,8 @@ export default function CreateSuccess() {
     );
   }
 
-  const websiteUrl = `https://${slug}.stonesystems.dev`;
-  const privacyPolicyUrl = `https://${slug}.stonesystems.dev/privacy-policy`;
+  const websiteUrl = `https://${slug}.stonesystems.io`;
+  const privacyPolicyUrl = `https://${slug}.stonesystems.io/privacy-policy`;
 
   const copyToClipboard = (text: string, label: string) => {
     navigator.clipboard.writeText(text);

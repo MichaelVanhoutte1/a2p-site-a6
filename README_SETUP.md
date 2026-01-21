@@ -13,12 +13,48 @@ npm install @supabase/supabase-js @vercel/node
 Create a `.env` file (or set these in Vercel) with the following variables:
 
 ```env
-SUPABASE_URL=your_supabase_url
-SUPABASE_ANON_KEY=your_supabase_anon_key
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+
+# Cloudflare API Configuration (for automatic DNS record creation)
+CLOUDFLARE_API_TOKEN=your_cloudflare_api_token
+CLOUDFLARE_ZONE_ID=your_cloudflare_zone_id
+
+# Vercel API Configuration (for automatic domain addition)
+VERCEL_API_TOKEN=your_vercel_api_token
+VERCEL_PROJECT_ID=your_vercel_project_id
 ```
 
-**Important:** The `SUPABASE_SERVICE_ROLE_KEY` should only be used server-side (in API routes). Never expose it in client-side code.
+**Important:** 
+- The `SUPABASE_SERVICE_ROLE_KEY` should only be used server-side (in API routes). Never expose it in client-side code.
+- API tokens (`CLOUDFLARE_API_TOKEN`, `VERCEL_API_TOKEN`) should only be used server-side and kept secure.
+
+### Getting Cloudflare Credentials
+
+1. **API Token**: 
+   - Go to https://dash.cloudflare.com/profile/api-tokens
+   - Create a token with "Edit zone DNS" permissions
+   - Limit scope to `stonesystems.io` zone
+   - Copy the token value
+
+2. **Zone ID**:
+   - Go to Cloudflare Dashboard → Select `stonesystems.io`
+   - On Overview page, find "Zone ID"
+   - Copy the Zone ID
+
+### Getting Vercel Credentials
+
+1. **API Token**:
+   - Go to https://vercel.com/account/tokens
+   - Create a new token with appropriate permissions
+   - Copy the token value
+
+2. **Project ID**:
+   - Go to your Vercel project → Settings
+   - Find "Project ID" in the project settings
+   - Copy the Project ID
 
 ## Database Setup
 
