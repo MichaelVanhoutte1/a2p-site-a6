@@ -259,9 +259,12 @@ export default async function handler(
 
     const domain = `${slug}.stonesystems.io`;
     const dnsResults: { cloudflare?: any; vercel?: any } = {};
-    let cnameTarget: string | null = null;
+    
+    // Get CNAME target from environment variable (project-specific Vercel CNAME)
+    const cnameTarget = process.env.VERCEL_CNAME_TARGET || 'fd3588ab14e28b6f.vercel-dns-017.com';
+    console.log(`Using CNAME target: ${cnameTarget}`);
 
-    // First, add domain to Vercel to get the correct DNS configuration
+    // First, add domain to Vercel
     if (vercelApiToken && vercelProjectId) {
       const vercelResult = await addVercelDomain(
         vercelApiToken,
@@ -270,21 +273,7 @@ export default async function handler(
       );
       dnsResults.vercel = vercelResult;
       
-      if (vercelResult.success) {
-        // Try to get the DNS configuration from Vercel
-        const dnsConfig = await getVercelDNSConfig(
-          vercelApiToken,
-          vercelProjectId,
-          domain
-        );
-        
-        if (dnsConfig.success && dnsConfig.cnameTarget) {
-          cnameTarget = dnsConfig.cnameTarget;
-          console.log(`Got CNAME target from Vercel: ${cnameTarget}`);
-        } else {
-          console.warn('Could not get CNAME target from Vercel API');
-        }
-      } else {
+      if (!vercelResult.success) {
         console.error('Vercel domain addition failed:', vercelResult.error);
         // Continue anyway - site is created in Supabase
       }
@@ -292,35 +281,19 @@ export default async function handler(
       console.warn('Vercel API credentials not configured, skipping domain addition');
     }
 
-    // Fallback: Use environment variable if Vercel API didn't provide it
-    if (!cnameTarget) {
-      cnameTarget = process.env.VERCEL_CNAME_TARGET || null;
-      if (cnameTarget) {
-        console.log(`Using CNAME target from environment variable: ${cnameTarget}`);
-      }
-    }
-
-    // Add DNS record to Cloudflare (only if we have a CNAME target)
+    // Add DNS record to Cloudflare
     if (cloudflareApiToken && cloudflareZoneId) {
-      if (cnameTarget) {
-        const cloudflareResult = await addCloudflareDNSRecord(
-          cloudflareZoneId,
-          cloudflareApiToken,
-          slug,
-          cnameTarget
-        );
-        dnsResults.cloudflare = cloudflareResult;
-        
-        if (!cloudflareResult.success && !cloudflareResult.skipped) {
-          console.error('Cloudflare DNS creation failed:', cloudflareResult.error);
-          // Continue anyway - site is created in Supabase
-        }
-      } else {
-        console.warn('No CNAME target available, skipping Cloudflare DNS record creation');
-        dnsResults.cloudflare = { 
-          success: false, 
-          error: 'CNAME target not available from Vercel API or environment variable' 
-        };
+      const cloudflareResult = await addCloudflareDNSRecord(
+        cloudflareZoneId,
+        cloudflareApiToken,
+        slug,
+        cnameTarget
+      );
+      dnsResults.cloudflare = cloudflareResult;
+      
+      if (!cloudflareResult.success && !cloudflareResult.skipped) {
+        console.error('Cloudflare DNS creation failed:', cloudflareResult.error);
+        // Continue anyway - site is created in Supabase
       }
     } else {
       console.warn('Cloudflare credentials not configured, skipping DNS record creation');

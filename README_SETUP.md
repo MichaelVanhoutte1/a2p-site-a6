@@ -25,8 +25,9 @@ CLOUDFLARE_ZONE_ID=your_cloudflare_zone_id
 # Vercel API Configuration (for automatic domain addition)
 VERCEL_API_TOKEN=your_vercel_api_token
 VERCEL_PROJECT_ID=your_vercel_project_id
-# Optional: CNAME target for Cloudflare DNS (if Vercel API doesn't provide it)
-# VERCEL_CNAME_TARGET=your_vercel_cname_target
+# CNAME target for Cloudflare DNS (project-specific, get from Vercel domain settings)
+# Default: fd3588ab14e28b6f.vercel-dns-017.com (can be overridden via env var)
+VERCEL_CNAME_TARGET=fd3588ab14e28b6f.vercel-dns-017.com
 ```
 
 **Important:** 
